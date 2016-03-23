@@ -2,14 +2,19 @@ var http = require("http");
 var phantom = require("phantom");
 var fs = require("fs");
 var q = require('q');
+var path = require('path');
+var findRemove = require('find-remove');
 
-var counter = 21000;
+var opts = {
+  paperSize: {format: "A4", orientation: 'portrait', margin: '1cm'},
+  saveDir: path.join(__dirname, "pdfTemp"),
+  idLength: 30
+};
 
 function renderpdf(url) {
-
   var deferred = q.defer();
-  var page, fileName, ph;
-  counter++;
+  var page, fileName, ph, fullPath;
+
   phantom.create()
     .then(function (_ph) {
       ph = _ph;
@@ -24,43 +29,39 @@ function renderpdf(url) {
     })
     .then(function (status) {
       fileName = makeid(30) + ".pdf";
-      return page.render(fileName);
+      fullPath = opts.saveDir + "/" + fileName;
+      return page.render(fullPath);
     })
     .then(function () {
-      deferred.resolve(fileName);
+      deferred.resolve(fullPath);
       ph.exit();
     })
-    .catch(deferred.reject);
+    .catch(function (err) {
+      deferred.reject(err)
+      ph.exit();
+    });
 
   return deferred.promise;
 }
 
-function removeFile(path) {
-  var deferred = q.defer();
-  fs.unlink(path, function (err) {
-    if (err) {
-      deferred.reject(err)
-    }
-    else {
-      deferred.resolve()
-    }
-  });
-  return deferred.promise;
+function cleanup(ageInSeconds) {
+  return findRemove(opts.saveDir,{age: {seconds: ageInSeconds}});
 }
 
 function makeid(strLength) {
-  strLength = (typeof optionalArg === "undefined") ? 5 : strLength;
+  if(!strLength) strLength = 30;
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-  for (var i = 0; i < strLength; i++)
+  for (var i = 0; i < strLength; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
 
   return text;
 }
 
 module.exports = {
   renderPdf: renderpdf,
-  removeFile: removeFile,
-  __makeId: makeid
-}
+  cleanup: cleanup,
+  opts: opts
+};

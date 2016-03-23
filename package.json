@@ -1,6 +1,6 @@
 {
   "name": "url2pdf",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Fetches a URL and converts HTML to PDF files using PhantomJS",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bindings": "^1.2.1",
+    "find-remove": "^0.2.10",
     "phantom": "^2.0.9",
     "q": "^1.1.2"
   },

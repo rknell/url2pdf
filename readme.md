@@ -30,3 +30,21 @@
             })
           })
         })
+        
+        
+### Configuration options
+You can set the configuration options globally by editing the `url2pdf.opts` object. The default settings are shown below
+
+    {
+      paperSize: {format: "A4", orientation: 'portrait', margin: '1cm'}, //Pretty self explanatory, adjust as needed
+      saveDir: path.join(__dirname, "pdfTemp"), //This is where the temporary files will be kept 
+      idLength: 30 //The length of the file ID, adjust if you need to avoid conflicts or just want smaller filenames
+    };
+
+#### Cleanup
+url2pdf comes with an auto cleanup function that will scan files in your temp directory and delete old ones as necessary. 
+This is optional and should be used at your own risk (ie don't point the temp directory anywhere stupid!);
+
+To use it call the following function, passing in the age in *seconds* you would like to delete
+
+    url2pdf.cleanUp(5); //Clean up all files older than 5 seconds
