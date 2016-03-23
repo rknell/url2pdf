@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bindings": "^1.2.1",
     "phantom": "^0.7.1",
     "q": "^1.1.2"
   },

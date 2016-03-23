@@ -2,9 +2,10 @@
 ---
 *Grab a URL and convert the HTML to PDF using PhantomJS for better rendering*
 
-**Early stages of dev, use at own risk - or help out!
+
 
 ## Usage ##
+Install PhantomJS on your system. ie `brew install phantomjs` etc.
 
 ###Simple###
 
