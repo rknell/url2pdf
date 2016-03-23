@@ -1,0 +1,37 @@
+{
+  "name": "url2pdf",
+  "version": "0.0.2",
+  "description": "Fetches a URL and converts HTML to PDF files using PhantomJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "phantom": "^0.7.1",
+    "q": "^1.1.2"
+  },
+  "gitHead": "8db71e34a80f4a4328f8a5ab7b332fe30d9d1eb6",
+  "_id": "url2pdf@0.0.2",
+  "_shasum": "cce8fd909f7464b54f16b91a69d1fd18c650edd8",
+  "_from": "url2pdf@latest",
+  "_npmVersion": "2.1.10",
+  "_nodeVersion": "0.10.22",
+  "_npmUser": {
+    "name": "ryanknell",
+    "email": "sales@snappyapps.com.au"
+  },
+  "maintainers": [
+    {
+      "name": "ryanknell",
+      "email": "sales@snappyapps.com.au"
+    }
+  ],
+  "dist": {
+    "shasum": "cce8fd909f7464b54f16b91a69d1fd18c650edd8",
+    "tarball": "http://registry.npmjs.org/url2pdf/-/url2pdf-0.0.2.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/url2pdf/-/url2pdf-0.0.2.tgz"
+}
