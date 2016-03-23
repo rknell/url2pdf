@@ -2,6 +2,9 @@
 ---
 *Grab a URL and convert the HTML to PDF using PhantomJS for better rendering*
 
+## Installation ##
+    npm install url2pdf --save
+
 ## Usage ##
 
 ###Simple###
@@ -27,7 +30,16 @@
             })
     }
     
-        
+   
+### PDF From HTML String
+So you have made your html in Jade etc and now you want to just turn it into a PDF without creating a whole website 
+just for this purpose? Easy! Just do as below:
+ 
+    var url2pdf = require("url2pdf");
+    url2pdf.renderFromHTML("<html><body><h1>HELLO WORLD</h1></body></html>")
+    	.then(function(path){
+	    	console.log("Rendered pdf @", path);
+    	});
         
 ### Configuration options
 You can set the configuration options globally by editing the `url2pdf.opts` object. The default settings are shown below
