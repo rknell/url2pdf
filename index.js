@@ -6,21 +6,32 @@ var q = require('q');
 var counter = 21000;
 
 function renderpdf(url) {
-  var deferred = q.defer();
-  counter++;
-  phantom.create(null, {port: counter}, function (ph) {
-    ph.createPage(function (page) {
-      page.set("paperSize", {format: "A4", orientation: 'portrait', margin: '1cm'});
-      page.open(url, function (status) {
-        var fileName = makeid(30) + ".pdf";
 
-        page.render(fileName, function(){
-          deferred.resolve(fileName);
-          ph.exit();
-        });
-      })
+  var deferred = q.defer();
+  var page, fileName, ph;
+  counter++;
+  phantom.create()
+    .then(function (_ph) {
+      ph = _ph;
+      return ph.createPage()
     })
-  });
+    .then(function (_page) {
+      page = _page;
+      return page.property("paperSize", {format: "A4", orientation: 'portrait', margin: '1cm'});
+    })
+    .then(function () {
+      return page.open(url)
+    })
+    .then(function (status) {
+      fileName = makeid(30) + ".pdf";
+      return page.render(fileName);
+    })
+    .then(function () {
+      deferred.resolve(fileName);
+      ph.exit();
+    })
+    .catch(deferred.reject);
+
   return deferred.promise;
 }
 
