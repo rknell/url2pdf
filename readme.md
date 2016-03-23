@@ -13,23 +13,20 @@
 	    	console.log("Rendered pdf @", path);
     	});
 
-###In Express as a download###
+###In Express route as a download###
 
-    app.use("/getPdf", function(req, res){
-    var url = req.protocol + '://' + req.get('host') + "/pathToViewToRender";
+    var url2pdf = require("url2pdf");
+    
+    function myRoute(req, res){
         url2pdf.renderPdf(url)
-          .then(function(path){
-            res.download(path, function(err){
-              if(err){
-                res.send(500);
-                setTimeout(function(){
-	              //After 10 Mins clear the PDF from the system
-                  url2pdf.removeFile(path);
-                }, 1000 * 60 * 10)
-              }
+            .then(function (path) {
+                res.sendFile(path);
             })
-          })
-        })
+            .catch(function(err){
+                res.status(500).json(err);
+            })
+    }
+    
         
         
 ### Configuration options
@@ -48,3 +45,14 @@ This is optional and should be used at your own risk (ie don't point the temp di
 To use it call the following function, passing in the age in *seconds* you would like to delete
 
     url2pdf.cleanUp(5); //Clean up all files older than 5 seconds
+    
+    
+#### Fonts/Page Too large?
+There is a problem with PhantomJS related to this very long thread:
+https://github.com/ariya/phantomjs/issues/12685
+
+This is the hacky workaround for the moment:
+
+    html {
+        zoom: 0.55; /*workaround for phantomJS2 rendering pages too large*/
+    }
