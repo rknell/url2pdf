@@ -50,6 +50,11 @@ You can set the configuration options globally by editing the `url2pdf.opts` obj
       idLength: 30 //The length of the file ID, adjust if you need to avoid conflicts or just want smaller filenames
     };
 
+If you want to just edit the settings for one render, you can do this by passing in just the object fields 
+you want to change as the second argument:
+
+    url2pdf.renderPdf("http://www.google.com", {paperSize: {orientation: "landscape"}})
+
 #### Cleanup
 url2pdf comes with an auto cleanup function that will scan files in your temp directory and delete old ones as necessary. 
 This is optional and should be used at your own risk (ie don't point the temp directory anywhere stupid!);
@@ -68,3 +73,9 @@ This is the hacky workaround for the moment:
     html {
         zoom: 0.55; /*workaround for phantomJS2 rendering pages too large*/
     }
+    
+
+### Known bugs
+There is a problem with rendering images when using HTML render mode. I'm pretty sure it has to do with the images still 
+being prepared by PhantomJS when the callback happens but haven't managed to get to the bottom of it yet. Any help 
+would be much appreciated! See the example.js for demo.
