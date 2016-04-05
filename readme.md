@@ -79,3 +79,7 @@ This is the hacky workaround for the moment:
 There is a problem with rendering images when using HTML render mode. I'm pretty sure it has to do with the images still 
 being prepared by PhantomJS when the callback happens but haven't managed to get to the bottom of it yet. Any help 
 would be much appreciated! See the example.js for demo.
+
+### Tests
+Don't really have unit tests. To test it out you can run `node example.js` which is what is used to make sure its all 
+clicking together. If you are contributing code - at the very least run it to make sure it all seems ok

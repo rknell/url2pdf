@@ -17,7 +17,7 @@ var _opts = {
 
 function mergeOpts(newOpts) {
   if(newOpts){
-    return _.merge(_opts, newOpts);
+    return _.merge({}, _opts, newOpts);
   } else {
     return _opts;
   }
