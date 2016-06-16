@@ -7,7 +7,7 @@
 
 ## Usage ##
 
-###Simple###
+###Simple
 
     var url2pdf = require("url2pdf");
     
@@ -16,7 +16,7 @@
 	    	console.log("Rendered pdf @", path);
     	});
 
-###In Express route as a download###
+###In Express route as a download
 
     var url2pdf = require("url2pdf");
     

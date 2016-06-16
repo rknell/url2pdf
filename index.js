@@ -79,7 +79,7 @@ function renderFromHTML(htmlString, opts) {
       fileName = makeid(opts.idLength) + ".pdf";
       fullPath = opts.saveDir + "/" + fileName;
 
-      return qTimeout(2000);
+      return qTimeout(20000);
     })
     .then(function () {
       return page.render(fullPath);
