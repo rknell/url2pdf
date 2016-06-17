@@ -63,7 +63,7 @@ function renderFromHTML(htmlString, opts) {
   var page, fileName, ph, fullPath;
 
   opts = mergeOpts(opts);
-  phantom.create()
+  phantom.create(['--ignore-ssl-errors=yes'])
     .then(function (_ph) {
       ph = _ph;
       return ph.createPage()
@@ -79,7 +79,7 @@ function renderFromHTML(htmlString, opts) {
       fileName = makeid(opts.idLength) + ".pdf";
       fullPath = opts.saveDir + "/" + fileName;
 
-      return qTimeout(20000);
+      return qTimeout(2000);
     })
     .then(function () {
       return page.render(fullPath);
