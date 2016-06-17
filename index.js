@@ -29,7 +29,7 @@ function renderpdf(url, opts) {
   var page, fileName, ph, fullPath;
 
   opts = mergeOpts(opts);
-  phantom.create()
+  phantom.create(['--ignore-ssl-errors=yes'])
     .then(function (_ph) {
       ph = _ph;
       return ph.createPage()
