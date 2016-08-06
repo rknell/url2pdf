@@ -2,7 +2,7 @@
 ---
 Grab a URL and convert the HTML to PDF using PhantomJS.
 Phantom renders the printing version.
-Can be used for generating a bills, protocols or lists from a website.
+Can be used for generating bills, protocols, lists, etc. from a website.
 
 
 
