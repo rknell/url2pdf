@@ -20,7 +20,8 @@ var _opts = {
     saveDir: path.join(__dirname, "pdfTemp"),
     idLength: 30,
     possibleIdChars: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-    loadTimeout: 800
+    loadTimeout: 500,
+    autoCleanFileAgeInSec: 20
 };
 
 
@@ -32,13 +33,7 @@ module.exports = {
     renderFromHTML: function renderFromHTML(htmlString, opts) {
         return render(htmlString, opts, "htmlContent");
     },
-    cleanup: function cleanup(ageInSeconds) {
-        return findRemove(_opts.saveDir, {
-            age: {
-                seconds: ageInSeconds
-            }
-        });
-    }
+    cleanup: _cleanup
 };
 
 
@@ -83,6 +78,9 @@ function render(string, opts, renderType) {
         })
         .then(function() {
             ph.exit();
+            if(0 < opts.autoCleanFileAgeInSec){
+                _cleanup(opts.autoCleanFileAgeInSec);
+            }
         });
 
     return deferred.promise;
@@ -124,4 +122,12 @@ function closure(fn) {
     return function() {
         fn.apply(_arguments);
     };
+}
+
+function _cleanup(ageInSeconds) {
+   return findRemove(_opts.saveDir, {
+       age: {
+           seconds: ageInSeconds
+       }
+   });
 }
