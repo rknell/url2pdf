@@ -17,9 +17,9 @@ Can be used for generating a bills, protocols or lists from a website.
 
 Then look into the project folder "pdfTemp"
 
-## API ##
+## API
 
-###PDF from URL
+#### PDF from URL
 
 ```javascript
     var url2pdf = require("url2pdf");
@@ -31,7 +31,7 @@ Then look into the project folder "pdfTemp"
 ```
 
 
-### PDF From HTML String
+#### PDF From HTML String
 So you have made your html in Jade etc and now you want to just turn it into a PDF without creating a whole website
 just for this purpose? Easy! Just do as below:
 
@@ -43,7 +43,7 @@ just for this purpose? Easy! Just do as below:
     	});
 ```
 
-###In Express route as a download
+#### In Express route as a download
 
 ```javascript
     var url2pdf = require("url2pdf");
@@ -59,7 +59,7 @@ just for this purpose? Easy! Just do as below:
     }
 ```
 
-### Manual cleanup
+#### Manual cleanup
 url2pdf comes with an auto cleanup function that will delete old files in your temp directory. For a manual cleanup disable the auto cleanup in the function call:
 
 ```javascript
@@ -68,12 +68,12 @@ url2pdf comes with an auto cleanup function that will delete old files in your t
      }).then( ...
 ```
 
-To clen the tmp folder call the following function, passing in the age in *seconds* you would like to delete:
+To clean the tmp folder call the following function, passing in the age in *seconds* you would like to delete:
 ```javascript
     url2pdf.cleanUp(5); // clean up all files older than 5 seconds
 ```
 
-### Configuration options
+## Configuration options
 You can set the configuration options globally by editing the `url2pdf.opts` object. The default settings are shown below
 
 ```javascript
@@ -93,7 +93,9 @@ you want to change as the second argument:
     url2pdf.renderPdf("http://www.google.com", {paperSize: {orientation: "landscape"}});
 ```
 
-##### Note: If you load a bigger webpage (images etc.), ensure, the loadTimeout is long enough to get everything!
+## Notes
+
+#### If you load a bigger webpage (images etc.), ensure, the loadTimeout is long enough to get everything!
 
 
 #### Fonts/Page Too large?
@@ -110,5 +112,5 @@ This is the hacky workaround for the moment:
 
 
 
-### Tests
+## Tests
 Just run `node example.js` which runs the available functions. If you are contributing code - at the very least run it to make sure it all seems ok
