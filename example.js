@@ -8,7 +8,7 @@ q.all([
     url2pdf.renderPdf("http://www.google.com"),
 
     url2pdf.renderFromHTML("<html><body><h1>Not working due to needed loading time - no image might be present</h1><img src='http://i.imgur.com/T0BxgW3.jpg' width='400px'/></body></html>"),
-    url2pdf.renderFromHTML("<html><body><h1>Page loaded with timeout. You should see a big image</h1><img src='http://i.imgur.com/T0BxgW3.jpg'/> </body></html>", {loadTimeout: 2000})
+    url2pdf.renderFromHTML("<html><body><h1>Page loaded with timeout. You should see a big image</h1><img src='http://i.imgur.com/T0BxgW3.jpg'/> </body></html>", {loadTimeout: 10000})
   ])
   .then(function (paths) {
     console.log("Created PDFs @", paths);
