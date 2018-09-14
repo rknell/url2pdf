@@ -114,3 +114,13 @@ This is the hacky workaround for the moment:
 
 ## Tests
 Just run `node example.js` which runs the available functions. If you are contributing code - at the very least run it to make sure it all seems ok
+
+## Alternatives
+In adding this to another project I discovered the community has extended the project. While I am still using this in production at the time of this edit, there hasn't been a flurry of upgrades because it just keeps working.
+
+However you might also want to check out these projects that have built on url2pdf:
+https://www.npmjs.com/package/url2pdf3
+
+https://www.npmjs.com/package/url2pdf-plus (now deprecated in favour of url2pdf3 but apparently has some features not moved forward)
+
+
