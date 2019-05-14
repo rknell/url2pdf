@@ -5,6 +5,7 @@ Phantom renders the printing version.
 Can be used for generating bills, protocols, lists, etc. from a website.
 
 **Current State**
+
 Right now this project is in a bit of a pickle - PhantomJS, the headless browser it relies on has been discontinued. The excellent Puppeteer is the logical successor, however it is not a like-for-like drop in and has some annoying dependency issues on linux. In favour of not breaking our current enterprise applications that rely on this system, I recommend new users check out https://www.npmjs.com/package/url2pdf3 for the time being.
 
 This does not mean that the project has been discontinued - I have a number of mission critical systems that rely on it personally, it just means that we are going to be very pragmatic about any big updates.
